@@ -3,7 +3,7 @@
 # ----------------------------------------
 
 import pandas as pd
-import pickle as pk
+import pickle
 import streamlit as st
 import os
 
@@ -17,12 +17,12 @@ st.header("🚗 Car Price Prediction ML Model")
 # ----------------------------------------
 model_path = os.path.join(os.path.dirname(__file__), "model.pkl")
 
-with open(model_path, "rb") as f:
-    pipe = pickle.load(f)
-
-data_path = os.path.join(os.path.dirname(__file__), "cars_data.pkl")
-with open(data_path, "rb") as f:
-    df = pickle.load(f)
+try:
+    with open(model_path, "rb") as f:
+        model = pickle.load(f)   # ✅ consistent variable name
+except Exception as e:
+    st.error(f"❌ Error loading model: {e}")
+    st.stop()
 
 # ----------------------------------------
 # Load dataset (for dropdown options)
