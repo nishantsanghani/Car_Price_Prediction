@@ -15,14 +15,14 @@ st.header("🚗 Car Price Prediction ML Model")
 # ----------------------------------------
 # Load trained ML model (with error handling)
 # ----------------------------------------
-try:
-    model = pk.load(open(
-        "C:\\Users\\nishant\\Downloads\\Data_Science_Analytics_Projects\\Machine learning projects\\Car Price Prediction\\model.pkl", 
-        "rb"
-    ))
-except Exception as e:
-    st.error(f"❌ Error loading model: {e}")
-    st.stop()
+model_path = os.path.join(os.path.dirname(__file__), "model.pkl")
+
+with open(model_path, "rb") as f:
+    pipe = pickle.load(f)
+
+data_path = os.path.join(os.path.dirname(__file__), "cars_data.pkl")
+with open(data_path, "rb") as f:
+    df = pickle.load(f)
 
 # ----------------------------------------
 # Load dataset (for dropdown options)
