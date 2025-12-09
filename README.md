@@ -78,3 +78,5 @@ http://localhost:8501/
 3. Deployment:
     - Streamlit app (app.py) loads model and takes user input.
     - Predicts price and displays in INR (₹).
+
+Live URL: https://carpriceprediction-system.streamlit.app/
